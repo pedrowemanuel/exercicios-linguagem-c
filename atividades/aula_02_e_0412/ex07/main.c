@@ -2,8 +2,7 @@
 
 int main() {
 
-  unsigned char valor1 = 16; // 10000
-  unsigned char valor2 = 19; // 10011
+  unsigned char valor1 = 16, valor2 = 19;
                              
   valor1 = valor1 ^ valor2; // 00011
 
