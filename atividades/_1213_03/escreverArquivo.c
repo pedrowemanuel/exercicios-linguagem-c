@@ -43,9 +43,7 @@ int escreverArquivo(coor *c,  size_t tamanho, char *nome) {
     if ((fp = fopen(nome, "wb")))
     {
         for (i = 0; i < tamanho; i++)
-        {
             if(!(fwrite((c + i), sizeof(coor), 1, fp))) erros++;
-        }
 
         rewind(fp);
         fclose(fp);

@@ -44,14 +44,12 @@ int lerArquivo(coor *p, char *nome) {
 
     if (!(fp = fopen(nome, "rb")))
     {
-        printf("Erro ao ler o arquivo: %s", nome);
+        printf("Erro ao ler o arquivo: %s\n", nome);
         exit(1);
     }
 
     for (indice = 0; fread(&c, sizeof(coor), 1, fp) >= 1; indice++)
-    {
         *(p + indice) = c;
-    }
     
     rewind(fp);
     fclose(fp);
