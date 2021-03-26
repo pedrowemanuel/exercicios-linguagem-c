@@ -19,6 +19,8 @@ int main() {
 
     lerImagemPGM(&img, nomeImagem);
     exibirImagemPGM(&img);
+
+    // criando uma nova imagem convertida em binario
     escreverImagemPGM(&img, novaImagem);
 
     return 0;
@@ -47,8 +49,11 @@ long int lerImagemPGM(image *pImg, char nomeImagem[]) {
 
     fseek(fp, 1, SEEK_CUR);
 
-    if ((ch = getc(fp)) == '#')
+    // tratando os comentarios
+    while ((ch = getc(fp)) == '#')
         while ((ch = getc(fp)) != '\n');
+    
+    fseek(fp, -1, SEEK_CUR);
     
     fscanf(fp, "%u%u", &pImg->numColunas, &pImg->numLinhas);
     fscanf(fp, "%d", &pImg->numeroNiveisCinza);
@@ -63,10 +68,11 @@ long int lerImagemPGM(image *pImg, char nomeImagem[]) {
 
             for (i = 0; i < (pImg->numColunas * pImg->numLinhas); i++) 
                 fscanf(fp, "%hhu", (pImg->pixels+i));
-            
         break;
         case 5:
             printf("Lendo PGM(Dados em binário)\n");
+            
+            fread(pImg->pixels, sizeof(unsigned char), pImg->numColunas * pImg->numLinhas, fp);
         break;
         default:
             printf("Formato inválido \n");
@@ -109,8 +115,8 @@ void escreverImagemPGM(image * pImg, char nomeImagem[]) {
     
     // escrever cabeçalho
     fprintf(fp, "%s\n", "P5");
-    fprintf(fp, "%d %d", pImg->numColunas, pImg->numLinhas);
-    fprintf(fp, "%d", pImg->numeroNiveisCinza);
+    fprintf(fp, "%d %d\n", pImg->numColunas, pImg->numLinhas);
+    fprintf(fp, "%d\n", pImg->numeroNiveisCinza);
     
     fwrite(pImg->pixels, sizeof(unsigned char), pImg->numColunas*pImg->numLinhas, fp);
 
