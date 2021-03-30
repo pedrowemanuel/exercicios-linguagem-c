@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "operacoes.h"
+#include "menu.h"
 
 int main(int argc, char *argv[]) {
 
@@ -14,12 +15,7 @@ int main(int argc, char *argv[]) {
     a = atoi(argv[1]);
     b = atoi(argv[2]);
     
-    printf("\t 0 -> Sair \n");
-    printf("\t 1 -> Somar \n");
-    printf("\t 2 -> Subtrair \n");
-    printf("\t 3 -> Multiplicar \n");
-    printf("\t 4 -> Dividir \n");
-
+    imprimirMenu();
     scanf("%u", &operacao);
 
     switch (operacao) {
