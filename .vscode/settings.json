@@ -2,6 +2,7 @@
     "files.associations": {
         "stdio.h": "c",
         "menu.h": "c",
-        "operacoes.h": "c"
+        "operacoes.h": "c",
+        "dirent.h": "c"
     }
 }
