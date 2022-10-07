@@ -39,13 +39,13 @@ long int lerImagemPGM(image *pImg, char nomeImagem[]) {
 
     switch (pImg->tipo) {
         case 2:
-            printf("Lendo PGM(Dados em texto)\n");
+            //printf("Lendo PGM(Dados em texto)\n");
 
             for (i = 0; i < (pImg->numColunas * pImg->numLinhas); i++) 
                 fscanf(fp, "%hhu", (pImg->pixels+i));
         break;
         case 5:
-            printf("Lendo PGM(Dados em binário)\n");
+            //printf("Lendo PGM(Dados em binário)\n");
             
             fread(pImg->pixels, sizeof(unsigned char), pImg->numColunas * pImg->numLinhas, fp);
         break;

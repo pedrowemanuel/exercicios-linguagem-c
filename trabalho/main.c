@@ -21,7 +21,7 @@ int main(void) {
             begin = clock();
 
             for (int i = 0; i < 100; i++) {
-                if (contador != 3 && contador != 5) {
+                if (contador != 0 && contador != 1) {
 
                     strcat(pastaImagensSemFiltro, dir->d_name);
                     lerImagemPGM(&img, pastaImagensSemFiltro);
